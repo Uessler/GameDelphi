@@ -1,0 +1,73 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{C3F0A6D2-7B41-4E95-8A2C-5D19E8B0F473}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="tests\EngineTests.dproj"/>
+        <Projects Include="samples\Sandbox\Sandbox.dproj"/>
+        <Projects Include="samples\Triangle\Triangle.dproj"/>
+        <Projects Include="samples\Pong\Pong.dproj"/>
+        <Projects Include="samples\Stress\Stress.dproj"/>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="EngineTests">
+        <MSBuild Projects="tests\EngineTests.dproj"/>
+    </Target>
+    <Target Name="EngineTests:Clean">
+        <MSBuild Projects="tests\EngineTests.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="EngineTests:Make">
+        <MSBuild Projects="tests\EngineTests.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Sandbox">
+        <MSBuild Projects="samples\Sandbox\Sandbox.dproj"/>
+    </Target>
+    <Target Name="Sandbox:Clean">
+        <MSBuild Projects="samples\Sandbox\Sandbox.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Sandbox:Make">
+        <MSBuild Projects="samples\Sandbox\Sandbox.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Triangle">
+        <MSBuild Projects="samples\Triangle\Triangle.dproj"/>
+    </Target>
+    <Target Name="Triangle:Clean">
+        <MSBuild Projects="samples\Triangle\Triangle.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Triangle:Make">
+        <MSBuild Projects="samples\Triangle\Triangle.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Pong">
+        <MSBuild Projects="samples\Pong\Pong.dproj"/>
+    </Target>
+    <Target Name="Pong:Clean">
+        <MSBuild Projects="samples\Pong\Pong.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Pong:Make">
+        <MSBuild Projects="samples\Pong\Pong.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Stress">
+        <MSBuild Projects="samples\Stress\Stress.dproj"/>
+    </Target>
+    <Target Name="Stress:Clean">
+        <MSBuild Projects="samples\Stress\Stress.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Stress:Make">
+        <MSBuild Projects="samples\Stress\Stress.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="EngineTests;Sandbox;Triangle;Pong;Stress"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="EngineTests:Clean;Sandbox:Clean;Triangle:Clean;Pong:Clean;Stress:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="EngineTests:Make;Sandbox:Make;Triangle:Make;Pong:Make;Stress:Make"/>
+    </Target>
+</Project>

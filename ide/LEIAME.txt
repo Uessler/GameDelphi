@@ -1,0 +1,58 @@
+JOJOS IDE - viewport dentro do Delphi
+=====================================
+
+O QUE E
+  Um package de design-time que adiciona uma janela docavel a IDE, rodando a
+  engine ao vivo. Ela se comporta como o Project Manager: encaixa, guarda a
+  posicao no desktop e aparece no menu de janelas - porque E uma janela da
+  IDE, nao uma janela nossa por cima.
+
+INSTALAR
+  1. File > Open > ide\JojosIDE.dpk
+  2. Plataforma: a da IDE, nao a do seu jogo.
+       IDE de 32 bits (padrao)     -> Win32
+       IDE de 64 bits (12.3+)      -> Win64
+  3. Botao direito no projeto > Build
+  4. Botao direito > Install
+  5. View > "Jojos Viewport"
+
+  A SDL2.dll tem que estar alcancavel pelo processo da IDE: PATH, ou copiada
+  para a pasta bin do RAD Studio. Ela e carregada DENTRO da IDE.
+
+DESINSTALAR
+  Component > Install Packages > desmarcar "Jojos Engine - viewport na IDE".
+
+O RISCO QUE VOCE ESTA ACEITANDO
+  Isto roda no mesmo processo da IDE (foi a escolha in-process). Um access
+  violation na engine derruba o Delphi junto, com o que estiver por salvar.
+  Enquanto a engine estiver mudando muito, salve antes de testar o viewport.
+
+  O viewport nao adota mais o HWND da VCL. Ele usa uma janela SDL oculta,
+  renderiza em framebuffer off-screen e o TPaintBox apresenta os pixels.
+  Docar ou desdocar nao recria mais o contexto nem os recursos da cena.
+  Se o risco in-process incomodar, a alternativa continua sendo executar o
+  renderer em outro processo e encaixar a janela dele na IDE.
+
+O QUE ELE MOSTRA HOJE
+  Uma cena de demonstracao: 400 quads girando, grade de fundo, e um marcador
+  amarelo na posicao do mouse convertida para coordenada de mundo (prova viva
+  do TCamera2D.ScreenToWorld). Botoes de pausar e reiniciar, e fps / sprites /
+  draw calls na barra.
+
+  Quando a etapa 8 (Engine.Scene) existir, este frame passa a desenhar a cena
+  aberta em vez dos quadradinhos. O encanamento - contexto GL oculto, render
+  target, timer no lugar do loop e input vindo da VCL - ja e o definitivo.
+
+STATUS DA VERSAO ANTERIOR
+  A versao que adotava o HWND foi verificada em RAD Studio 37.0, IDE Win32,
+  NVIDIA RTX 3060:
+    431 sprites em 1 draw call, pior frame 0,6 ms.
+
+  Os ~21 fps sao granularidade do TTimer, nao carga. Com frame de 0,6 ms o
+  viewport fica ocioso quase o tempo todo - que e exatamente o que se quer
+  de um painel dentro da IDE. Aumentar para 60 fps so tiraria tempo de
+  resposta do Delphi em troca de nada.
+
+  Se o viewport ficar lento, ele se defende sozinho: cai para 4 fps e, se
+  nao melhorar, desliga e escreve o motivo na barra. Frame lento dentro da
+  IDE nao e "lento", e IDE travada.

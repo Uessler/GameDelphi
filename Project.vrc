@@ -1,0 +1,65 @@
+/* ----- VS_VERSION.dwFileFlags ----- */
+#define VS_FF_DEBUG             0x00000001L
+#define VS_FF_PRERELEASE        0x00000002L
+#define VS_FF_PATCHED           0x00000004L
+#define VS_FF_PRIVATEBUILD      0x00000008L
+#define VS_FF_INFOINFERRED      0x00000010L
+#define VS_FF_SPECIALBUILD      0x00000020L
+#define VS_FFI_FILEFLAGSMASK    0x0000003FL
+
+/* ----- VS_VERSION.dwFileOS ----- */
+#define VOS_UNKNOWN             0x00000000L
+#define VOS_DOS                 0x00010000L
+#define VOS_OS216               0x00020000L
+#define VOS_OS232               0x00030000L
+#define VOS_NT                  0x00040000L
+#define VOS_WINCE               0x00050000L
+
+#define VOS__BASE               0x00000000L
+#define VOS__WINDOWS16          0x00000001L
+#define VOS__PM16               0x00000002L
+#define VOS__PM32               0x00000003L
+#define VOS__WINDOWS32          0x00000004L
+
+#define VOS_DOS_WINDOWS16       0x00010001L
+#define VOS_DOS_WINDOWS32       0x00010004L
+#define VOS_OS216_PM16          0x00020002L
+#define VOS_OS232_PM32          0x00030003L
+#define VOS_NT_WINDOWS32        0x00040004L
+
+/* ----- VS_VERSION.dwFileType ----- */
+#define VFT_UNKNOWN             0x00000000L
+#define VFT_APP                 0x00000001L
+#define VFT_DLL                 0x00000002L
+#define VFT_DRV                 0x00000003L
+#define VFT_FONT                0x00000004L
+#define VFT_VXD                 0x00000005L
+#define VFT_STATIC_LIB          0x00000007L
+
+1 VERSIONINFO
+FILEVERSION 1, 0, 0, 0
+PRODUCTVERSION 1, 0, 0, 0
+FILEFLAGSMASK VS_FFI_FILEFLAGSMASK
+FILEOS VOS__WINDOWS32
+FILETYPE VFT_APP
+{
+ BLOCK "StringFileInfo"
+ {
+  BLOCK "040904E4"
+  {
+   VALUE "FileDescription",  "Project\000\000"
+   VALUE "FileVersion",  "1.0.0.0\000\000"
+   VALUE "ProgramID",  "com.embarcadero.Project\000\000"
+   VALUE "ProductName",  "Project\000\000"
+   VALUE "ProductVersion",  "1.0.0.0\000\000"
+  }
+ }
+ BLOCK "VarFileInfo"
+ {
+  VALUE "Translation", 1033, 1252
+ }
+}
+
+MAINICON ICON "c:\\program files (x86)\\embarcadero\\studio\\37.0\\bin\\delphi_PROJECTICON.ico"
+1 24 "Project.$manifest"
+PLATFORMTARGETS RCDATA {0x8013L}

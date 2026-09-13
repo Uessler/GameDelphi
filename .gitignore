@@ -1,0 +1,25 @@
+__history/
+__recovery/
+build/
+bin/
+Win32/
+Claude outputs/
+doc.txt
+
+*.dcu
+*.exe
+*.dll
+*.bpl
+*.dcp
+*.map
+*.rsm
+*.tds
+*.identcache
+*.local
+*.stat
+*.otares
+
+.idea/
+.vscode/
+Thumbs.db
+Desktop.ini

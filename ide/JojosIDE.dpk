@@ -1,0 +1,57 @@
+
+
+package JojosIDE;
+
+{$R *.res}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE DEBUG}
+{$ENDIF IMPLICITBUILDING}
+{$DESCRIPTION 'Jojos Engine - viewport na IDE'}
+{$LIBSUFFIX AUTO}
+{$DESIGNONLY}
+{$IMPLICITBUILD OFF}
+
+requires
+  rtl,
+  vcl,
+  designide;
+
+contains
+  Engine.Core.Math in '..\src\Core\Engine.Core.Math.pas',
+  Engine.Core.Loop in '..\src\Core\Engine.Core.Loop.pas',
+  Engine.Core.Log in '..\src\Core\Engine.Core.Log.pas',
+  Engine.Core.Memory in '..\src\Core\Engine.Core.Memory.pas',
+  Engine.Platform.SDL2 in '..\src\Platform\Engine.Platform.SDL2.pas',
+  Engine.Platform.Time in '..\src\Platform\Engine.Platform.Time.pas',
+  Engine.Platform.Input in '..\src\Platform\Engine.Platform.Input.pas',
+  Engine.Platform.Window in '..\src\Platform\Engine.Platform.Window.pas',
+  Engine.RHI.Types in '..\src\RHI\Engine.RHI.Types.pas',
+  Engine.RHI.GL.Loader in '..\src\RHI\Engine.RHI.GL.Loader.pas',
+  Engine.RHI.GL.Device in '..\src\RHI\Engine.RHI.GL.Device.pas',
+  Engine.Renderer.Camera2D in '..\src\Renderer\Engine.Renderer.Camera2D.pas',
+  Engine.Renderer.SpriteBatch in '..\src\Renderer\Engine.Renderer.SpriteBatch.pas',
+  Engine.IDE.ViewportFrame in 'Engine.IDE.ViewportFrame.pas' ,
+  Engine.IDE.Register in 'Engine.IDE.Register.pas';
+
+end.
