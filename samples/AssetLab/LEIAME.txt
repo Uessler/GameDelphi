@@ -1,0 +1,6 @@
+Execute AssetLab e altere os arquivos da pasta assets durante a execucao.
+
+sample.png recarrega a textura.
+asset.vert e asset.frag recompilam o shader.
+Um arquivo invalido mantem o ultimo recurso valido na tela e mostra o erro no console.
+R forca a recarga. ESC encerra.

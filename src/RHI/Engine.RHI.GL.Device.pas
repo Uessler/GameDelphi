@@ -1004,6 +1004,7 @@ var
   T: TGLTexture;
   Internal: GLint;
   Fmt, Typ: GLenum;
+  PreviousId: GLuint;
 begin
   T.Id := 0;
   T.Width := Desc.Width;
@@ -1019,6 +1020,7 @@ begin
 
   GLTextureFormat(Desc.Format, Internal, Fmt, Typ);
 
+  PreviousId := FCurTextures[0];
   glActiveTexture(GL_TEXTURE0);
   glBindTexture(GL_TEXTURE_2D, T.Id);
   glTexImage2D(GL_TEXTURE_2D, 0, Internal, Desc.Width, Desc.Height, 0, Fmt,
@@ -1032,8 +1034,7 @@ begin
   if Desc.GenerateMipmaps and (Desc.Pixels <> nil) then
     glGenerateMipmap(GL_TEXTURE_2D);
 
-  glBindTexture(GL_TEXTURE_2D, 0);
-  FCurTextures[0] := 0;
+  glBindTexture(GL_TEXTURE_2D, PreviousId);
 
   Result := FTextures.Add(T);
 end;

@@ -8,6 +8,7 @@
         <Projects Include="samples\Triangle\Triangle.dproj"/>
         <Projects Include="samples\Pong\Pong.dproj"/>
         <Projects Include="samples\Stress\Stress.dproj"/>
+        <Projects Include="samples\AssetLab\AssetLab.dproj"/>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -61,13 +62,22 @@
     <Target Name="Stress:Make">
         <MSBuild Projects="samples\Stress\Stress.dproj" Targets="Make"/>
     </Target>
+    <Target Name="AssetLab">
+        <MSBuild Projects="samples\AssetLab\AssetLab.dproj"/>
+    </Target>
+    <Target Name="AssetLab:Clean">
+        <MSBuild Projects="samples\AssetLab\AssetLab.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="AssetLab:Make">
+        <MSBuild Projects="samples\AssetLab\AssetLab.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="EngineTests;Sandbox;Triangle;Pong;Stress"/>
+        <CallTarget Targets="EngineTests;Sandbox;Triangle;Pong;Stress;AssetLab"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="EngineTests:Clean;Sandbox:Clean;Triangle:Clean;Pong:Clean;Stress:Clean"/>
+        <CallTarget Targets="EngineTests:Clean;Sandbox:Clean;Triangle:Clean;Pong:Clean;Stress:Clean;AssetLab:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="EngineTests:Make;Sandbox:Make;Triangle:Make;Pong:Make;Stress:Make"/>
+        <CallTarget Targets="EngineTests:Make;Sandbox:Make;Triangle:Make;Pong:Make;Stress:Make;AssetLab:Make"/>
     </Target>
 </Project>
